@@ -19,4 +19,4 @@ ADD . .
 
 RUN echo \$GITHUB_EVENT_PATH | jq -r '.number'
 
-CMD ["danger", "pr", "$(echo \$GITHUB_EVENT_PATH | jq -r '.number')"]
+CMD ["DANGER_GITHUB_API_TOKEN=\$GITHUB_TOKEN", "danger", "pr", "$(echo \$GITHUB_EVENT_PATH | jq -r '.number')"]
