@@ -17,6 +17,4 @@ RUN gem install danger
 
 ADD . .
 
-RUN echo \$GITHUB_EVENT_PATH | jq -r '.number'
-
-CMD ["DANGER_GITHUB_API_TOKEN=\$GITHUB_TOKEN", "danger", "pr", "https://github.com/\$GITHUB_REPOSITORY/pull/\$(echo \$GITHUB_EVENT_PATH | jq -r '.number')"]
+CMD "danger pr https://github.com/$GITHUB_REPOSITORY/pull/$(cat $GITHUB_EVENT_PATH | jq -r '.number')"
