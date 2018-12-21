@@ -10,11 +10,12 @@ LABEL "com.github.actions.icon"="alert-triangle"
 LABEL "com.github.actions.color"="yellow"
 
 RUN apk update \
- && apk add jq \
+ && apk add jq git \
  && rm -rf /var/cache/apk/*
 
-RUN gem install danger
+RUN gem install specific_install \
+ && gem specific_install https://github.com/duck8823/danger feature/ci_source/github_actions
 
 ADD . .
 
-CMD "danger pr https://github.com/$GITHUB_REPOSITORY/pull/$(cat $GITHUB_EVENT_PATH | jq -r '.number')"
+CMD "danger"
