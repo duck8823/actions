@@ -10,11 +10,10 @@ LABEL "com.github.actions.icon"="alert-triangle"
 LABEL "com.github.actions.color"="yellow"
 
 RUN apk update \
- && apk add jq git \
+ && apk add git \
  && rm -rf /var/cache/apk/*
 
-RUN gem install specific_install \
- && gem specific_install https://github.com/duck8823/danger feature/ci_source/github_actions
+RUN gem install danger
 
 ADD . .
 
