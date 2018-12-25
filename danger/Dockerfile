@@ -15,6 +15,4 @@ RUN apk update \
 
 RUN gem install danger
 
-ADD . .
-
 CMD "danger"
