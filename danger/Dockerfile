@@ -13,4 +13,4 @@ RUN apk --update add --no-cache git
 
 RUN gem install danger
 
-CMD "danger"
+ENTRYPOINT ["danger"]
