@@ -9,9 +9,7 @@ LABEL "com.github.actions.description"="Run Danger"
 LABEL "com.github.actions.icon"="alert-triangle"
 LABEL "com.github.actions.color"="yellow"
 
-RUN apk update \
- && apk add git \
- && rm -rf /var/cache/apk/*
+RUN apk --update add --no-cache git
 
 RUN gem install danger
 
